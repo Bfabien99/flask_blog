@@ -1,6 +1,10 @@
 {% extends 'base.html' %}
 {% block main %}
-<h1>Hello {%if name %}{{name}}{% else %}World!{% endif %}</h1>
+<h1>Hello, {% if name %}{{ name }}{% else %}Stranger{% endif %}!</h1> {% if not known %}
+<p>Pleased to meet you!</p>
+{% else %}
+<p>Happy to see you again!</p>
+{% endif %}
 <form method="POST">
     {{ form.csrf_token }}
     {{ form.name.label }} {{ form.name() }}
