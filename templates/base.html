@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     {{ bootstrap.load_css() }}
+    {{ moment.include_moment() }}
     <title>Document</title>
 </head>
 
@@ -44,6 +45,8 @@
         </div>
     </nav>
     <main>
+        <p>date: {{moment().format('MMMM Do YYYY, h:mm:ss a')}}</p>
+        <p>That was {{ moment(current_time).fromNow(refresh=True) }}</p>
         {% block main %}
         {% endblock %}
     </main>
