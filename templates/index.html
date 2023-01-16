@@ -1,4 +1,12 @@
 {% extends 'base.html' %}
 {% block main %}
-<h1>Hello World!</h1>
+<h1>Hello {%if name %}{{name}}{% else %}World!{% endif %}</h1>
+<form method="POST">
+    {{ form.csrf_token }}
+    {{ form.name.label }} {{ form.name() }}
+    {% if form.errors %}
+        <ul class="errors">{% for error in form.errors %}<li class="alert alert-danger">{{ error }}</li>{% endfor %}</ul>
+    {% endif %}
+    {{ form.submit() }}
+    </form>
 {% endblock %}
